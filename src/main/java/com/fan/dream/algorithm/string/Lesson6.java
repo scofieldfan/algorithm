@@ -1,8 +1,6 @@
 package com.fan.dream.algorithm.string;
 
 import java.util.Arrays;
-import java.util.HashSet;
-import java.util.Set;
 
 public class Lesson6 {
 
@@ -35,30 +33,25 @@ public class Lesson6 {
         if (matrix == null) {
             return;
         }
-        Set<Integer> rows = new HashSet<Integer>();
-        Set<Integer> columns = new HashSet<Integer>();
+        int[] rows = new int[matrix.length];
+        int[] columns = new int[matrix[0].length];
         for (int i = 0; i < matrix.length; i++) {
             int[] row = matrix[i];
             for (int j = 0; j < row.length; j++) {
-                int ele = row[j];
-                if (ele == 0) {
-                    rows.add(i);
-                    columns.add(j);
+                if (row[j] == 0) {
+                    rows[i] = 1;
+                    columns[j] = 1;
                 }
             }
         }
         setMatrix(matrix, rows, columns);
     }
 
-    public void setMatrix(int[][] matrix, Set<Integer> rows, Set<Integer> columns) {
+    public void setMatrix(int[][] matrix, int[] rows, int[] columns) {
         for (int i = 0; i < matrix.length; i++) {
             int[] row = matrix[i];
-            boolean setZero = false;
-            if (rows.contains(i)) {
-                setZero = true;
-            }
             for (int j = 0; j < row.length; j++) {
-                if (setZero || columns.contains(j)) {
+                if (rows[i] == 1 || columns[j] == 1) {
                     matrix[i][j] = 0;
                 }
             }
