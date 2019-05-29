@@ -16,6 +16,12 @@ public class Lesson6 {
         System.out.println(lesson6.isEchoLinkList(head));
     }
 
+    /**
+     * 遍历一半就可以，加快速度.利用快慢指针
+     *
+     * @param head
+     * @return
+     */
     public boolean isEchoLinkList(Node head) {
 
         Node node = head;
