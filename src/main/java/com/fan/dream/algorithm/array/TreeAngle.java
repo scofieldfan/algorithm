@@ -140,6 +140,7 @@ public class TreeAngle {
                 }
             }
         }
+        return result;
 
     }
 

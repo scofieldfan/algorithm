@@ -18,7 +18,7 @@ public class LevelOrder {
         if (root == null) {
             return ret;
         }
-        Queue<TreeNode> queue = new Queue<TreeNode>();
+        Queue<TreeNode> queue = new LinkedList<>();
         queue.add(root);
         while (!queue.isEmpty()) {
             List<Integer> list = new ArrayList<>();

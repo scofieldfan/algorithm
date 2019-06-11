@@ -130,8 +130,8 @@ public class Lesson1 {
         if (root == null) {
             return null;
         }
-        int min = p < q ? p : q;
-        int max = p < q ? q : p;
+        int min = p.val < q.val ? p.val : q.val;
+        int max = p.val < q.val ? q.val : p.val;
         if (root.val > min && root.val < max) {
             return root;
         } else if (root.val <= min) {
@@ -139,6 +139,7 @@ public class Lesson1 {
         } else if (root.val > max) {
             return lowestCommonAncestor(root.left, p, q);
         }
+        return null;
     }
 
     class Node {
