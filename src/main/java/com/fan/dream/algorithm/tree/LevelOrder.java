@@ -35,4 +35,21 @@ public class LevelOrder {
         }
         return ret;
     }
+
+    public boolean hasPathSum(TreeNode root, int sum) {
+        return dfs(root, sum);
+    }
+
+    public boolean dfs(TreeNode root, int sum) {
+        if (root == null) {
+            return false;
+        }
+        if (root.val == sum) {
+            return true;
+        }
+        if (sum - root.val < 0) {
+            return false;
+        }
+        return dfs(root.left, sum - root.val) || dfs(root.right, sum - root.val);
+    }
 }
