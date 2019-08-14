@@ -1,5 +1,5 @@
 # algorithm
-回顾一下Java和算法。包含Cracking The Coding Interview 和 Leetcode 里的一些东西。
+回顾一下Java和算法。包含Cracking The Coding Interview 和 Leetcode 里的一些东西。最近用Java和JS分别做了一些题，收获就是Js的动态类型确实会印起好多错误。但是Js的代码会比Java短。Java确实有些臃肿，但是代码执行的起来，不可预料的问题相对较少！
 ### array
 * two sum
 * three sum
