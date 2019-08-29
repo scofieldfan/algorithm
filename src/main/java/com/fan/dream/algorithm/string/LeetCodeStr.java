@@ -34,6 +34,7 @@ public class LeetCodeStr {
         System.out.println(lc.strStr("mississippi", "mississippi"));
     }
 
+
     public int strStr(String haystack, String needle) {
         int key = 0;
         for (int i = 0; i < needle.length(); i++) {

@@ -9,6 +9,55 @@ public class Lesson1 {
 
     }
 
+
+    public void dfs(List<List<String>> list, int layer, TreeNode root) {
+        if (root == null) {
+            return;
+        }
+        for (int i = 0; i < layer; i++) {
+            List<String> l = list.get(i);
+
+        }
+    }
+
+    public void fillArrayList(TreeNode root, List<List<String>> list, int start, int end, int layer) {
+
+        if (root == null) {
+            return;
+        }
+        if (start > end) {
+            return;
+        }
+        int mid = (start + end) / 2;
+        List<String> row = list.get(layer);
+        row.set(mid, String.valueOf(root.val));
+        fillArrayList(root.left, list, start, mid - 1, layer + 1);
+        fillArrayList(root.right, list, mid + 1, end, layer + 1);
+    }
+
+    public List<List<String>> printTree(TreeNode root) {
+        int dep = depth(root);
+        int columns = (int) Math.pow(2, dep) - 1;
+        List<List<String>> list = new ArrayList<>(dep);
+
+        for (int i = 0; i < dep; i++) {
+            List<String> L = new ArrayList<>(columns);
+            list.add(L);
+        }
+        fillArrayList(root, list, 0, columns - 1, 0);
+        return list;
+    }
+
+    public int depth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        int leftDepth = depth(root.left);
+        int rightDepth = depth(root.right);
+        return leftDepth > rightDepth ? leftDepth + 1 : rightDepth + 1;
+
+    }
+
     public int rangeSumBST(TreeNode root, int L, int R) {
 
         if (root == null) {

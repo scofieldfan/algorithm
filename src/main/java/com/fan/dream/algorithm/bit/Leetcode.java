@@ -1,6 +1,9 @@
 package com.fan.dream.algorithm.bit;
 
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Leetcode {
 
     /**
@@ -11,7 +14,33 @@ public class Leetcode {
         Leetcode lc = new Leetcode();
 //        System.out.println(lc.hammingDistance(1, 5));
 //        System.out.println(lc.hammingDistance(1, 4));
-        System.out.println(lc.findComplement(5));
+//        System.out.println(lc.findComplement(5));
+//        System.out.println(5 & -5);
+//        System.out.println(5 & 4);
+        List<Integer> list = new ArrayList<>();
+//        int[] nums = {2, 1, 2, 3, 4, 1};
+//        int[] nums2 = {1, 2, 1, 3, 2, 5};
+//        System.out.println(Arrays.toString(lc.singleNumber(nums)));
+//        System.out.println(Arrays.toString(lc.singleNumber(nums2)));
+        list.add(1);
+        System.out.println(list.toString());
+    }
+
+    public int[] singleNumber(int[] nums) {
+        int xor = 0;
+        for (int i = 0; i < nums.length; i++) {
+            xor ^= nums[i];
+        }
+        int mask = xor ^ (xor & (xor - 1));
+        int[] result = new int[2];
+        for (int i = 0; i < nums.length; i++) {
+            if ((nums[i] & mask) == 0) {
+                result[0] ^= nums[i];
+            } else {
+                result[1] ^= nums[i];
+            }
+        }
+        return result;
     }
 
     public int hammingDistance(int x, int y) {

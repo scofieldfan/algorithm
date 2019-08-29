@@ -34,8 +34,44 @@ public class Solution {
 //        System.out.println(so.lengthOfLongestSubstring("pwwkew"));
 //        System.out.println(so.lengthOfLongestSubstring("tmmzuxt"));
 //        System.out.println(so.lengthOfLongestSubstring(" "));
-        System.out.println(so.addStrings("123", "456"));
+//        System.out.println(so.addStrings("123", "456"));
+        System.out.println(so.restoreIpAddresses("25525511135"));
+
     }
+
+
+    public void dfs(String preFix, int start, String s, int times, List<String> list) {
+
+        if (start > s.length()) {
+            return;
+        }
+        if (start == s.length() && times == 0) {
+            list.add(preFix);
+        }
+        if (times == 0) {
+            return;
+        }
+
+        int len = 1;
+        for (int i = 0; i < len; i++) {
+            int end = start + i + 1;
+            if (end <= s.length()) {
+
+                int num = Integer.parseInt(s.substring(start, end));
+                if (num >= 1 && num <= 255) {
+                    String cur = times == 1 ? String.valueOf(num) : String.valueOf(num) + ".";
+                    dfs(preFix + cur, end, s, times - 1, list);
+                }
+            }
+        }
+    }
+
+    public List<String> restoreIpAddresses(String s) {
+        List<String> list = new ArrayList<>();
+        dfs("", 0, s, 4, list);
+        return list;
+    }
+
 
     public String addStrings(String num1, String num2) {
         int i = num1.length() - 1, j = num2.length() - 1;

@@ -1,7 +1,6 @@
 package com.fan.dream.algorithm.math;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Lesson1 {
 
@@ -21,8 +20,46 @@ public class Lesson1 {
             System.out.print(t);
         }*/
 //        System.out.println(lesson1.getSum(2, 3));
-        System.out.println(lesson1.reverse(1534236469));
-        System.out.println(Integer.MAX_VALUE);
+//        System.out.println(lesson1.reverse(1534236469));
+//        System.out.println(Integer.MAX_VALUE);
+        int[] num = {1, 2, 3, 4};
+        System.out.println(lesson1.permute(num));
+        PriorityQueue queue = new PriorityQueue();
+        Map<String, Integer> map = new HashMap<>();
+
+
+    }
+
+    public void dfs(int[] nums, int index, List<List<Integer>> result) {
+        if (index == 0) {
+
+            List<Integer> list = new ArrayList<>();
+            list.add(nums[0]);
+            result.add(list);
+            return;
+        }
+        dfs(nums, index - 1, result);
+        int cur = nums[index];
+        int size = result.size();
+        List<List<Integer>> newResult = new ArrayList<>(result);
+        result.clear();
+        for (int i = 0; i < size; i++) {
+            List<Integer> item = newResult.get(i);
+            int p = item.size(), j = 0;
+            while (j <= p) {
+                List<Integer> temp = new ArrayList<>(item);
+                temp.add(j, cur);
+                result.add(temp);
+                j++;
+            }
+        }
+    }
+
+
+    public List<List<Integer>> permute(int[] nums) {
+        List<List<Integer>> list = new ArrayList<>();
+        dfs(nums, nums.length - 1, list);
+        return list;
     }
 
     public int reverse(int x) {

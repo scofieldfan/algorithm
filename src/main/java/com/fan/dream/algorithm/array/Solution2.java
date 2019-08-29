@@ -1,5 +1,7 @@
 package com.fan.dream.algorithm.array;
 
+import java.util.*;
+
 public class Solution2 {
 
     public static void main(String[] args) {
@@ -12,8 +14,40 @@ public class Solution2 {
 //        System.out.println(s2.plusOne(c));
 //        Random random = new Random();
 //        System.out.println((char) random.nextInt());
-        int[] d = {4, 5, 0, -2, -3, 1};
-        System.out.println(s2.subarraysDivByK(d, 5));
+//        int[] d = {4, 5, 0, -2, -3, 1};
+//        System.out.println(s2.subarraysDivByK(d, 5));
+        for (int i = 0; i < 100; i++) {
+            System.out.println((int) (Math.random() * 10));
+        }
+        String S = "23423";
+        System.out.println(90 / 10);
+        System.out.println(100 / 10);
+    }
+
+
+    public List<String> topKFrequent(String[] words, int k) {
+        Map<String, Integer> map = new HashMap<>();
+        for (String word : words) {
+            map.put(word, map.getOrDefault(word, 0) + 1);
+        }
+        PriorityQueue<String> queue = new PriorityQueue<>(new Comparator<String>() {
+            @Override
+            public int compare(String o1, String o2) {
+                if (map.get(o1) == map.get(o2)) {
+                    return o1.compareTo(o2);
+                }
+                return map.get(o1).compareTo(map.get(o2));
+            }
+        });
+        for (String key : map.keySet()) {
+            queue.add(key);
+        }
+        List<String> result = new ArrayList<>();
+        while (k > 0) {
+            result.add(queue.poll());
+            k--;
+        }
+        return result;
     }
 
     public int subarraysDivByK(int[] A, int K) {
@@ -30,6 +64,7 @@ public class Solution2 {
         }
         return sum;
     }
+
 
     public int[] plusOne(int[] digits) {
 
